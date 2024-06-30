@@ -1,4 +1,4 @@
-import { countAtom } from "./Store/atoms/count"
+import { countAtom, readValue } from "./Store/atoms/count"
 import {useRecoilValue , useRecoilState , RecoilRoot} from 'recoil'
 
 function App() {
@@ -15,11 +15,19 @@ const DecrementCount =()=>{
 
   return (
     <>
-      <RecoilRoot>
         <button onClick={IncrementCount}>Increment</button>
         <h2>{count}</h2>
         <button onClick={DecrementCount}>Decrement</button>
-      </RecoilRoot>
+        <PracticeuseRecoilValue/>
+    </>
+  )
+}
+
+const PracticeuseRecoilValue = ()=>{
+  const readVal = useRecoilValue(readValue)
+  return(
+    <>
+       <h3>{readVal}</h3>
     </>
   )
 }
