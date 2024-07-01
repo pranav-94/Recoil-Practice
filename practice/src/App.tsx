@@ -1,5 +1,6 @@
 import { countAtom, readValue } from "./Store/atoms/count"
-import {useRecoilValue , useRecoilState , RecoilRoot} from 'recoil'
+import {useRecoilValue , useRecoilState } from 'recoil'
+import {useMemo} from 'react'
 
 function App() {
 
@@ -19,8 +20,25 @@ const DecrementCount =()=>{
         <h2>{count}</h2>
         <button onClick={DecrementCount}>Decrement</button>
         <PracticeuseRecoilValue/>
+        <IsEvenChecker count={count}/>
     </>
   )
+}
+
+const IsEvenChecker = ({count})=>{
+
+  const isEven = useMemo(()=>{
+    return count % 2 === 0
+  },[count]) 
+
+  if(isEven){
+  return(
+    <>
+    <p>It is even</p>
+    </>
+  )
+}
+
 }
 
 const PracticeuseRecoilValue = ()=>{
