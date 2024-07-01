@@ -1,4 +1,4 @@
-import { countAtom, readValue } from "./Store/atoms/count"
+import { countAtom, readValue, evenSelector } from "./Store/atoms/count"
 import {useRecoilValue , useRecoilState } from 'recoil'
 import {useMemo} from 'react'
 
@@ -27,9 +27,7 @@ const DecrementCount =()=>{
 
 const IsEvenChecker = ({count})=>{
 
-  const isEven = useMemo(()=>{
-    return count % 2 === 0
-  },[count]) 
+  const isEven = useRecoilValue(evenSelector)
 
   if(isEven){
   return(
